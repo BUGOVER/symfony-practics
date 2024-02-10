@@ -1,0 +1,14 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "title": "Android",
+      "slug": "android"
+    },
+    {
+      "id": 2,
+      "title": "Iphone",
+      "slug": "Ios"
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+
+yWeb:MaxLineLengthCheck%"KSplit this 124 characters long line (which is greater than 120 authorized).(¨ª¡üÿÿÿÿ8Úâç Ù1
+kphp:S103%"KSplit this 124 characters long line (which is greater than 120 authorized).(¨ª¡üÿÿÿÿ8‚ãç Ù1
+?php:S125*"Remove this commented out code.(ÊÚ·áùÿÿÿÿ8—ó™Ù1
+:php:S1259"Remove this commented out code.(œ¦€„8—ó™Ù1

@@ -8,6 +8,7 @@ use App\Repository\BookCategoryRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: BookCategoryRepository::class)]
+#[ORM\Table(name: 'postgres:book_category')]
 class BookCategory
 {
     #[ORM\Id]

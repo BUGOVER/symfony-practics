@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Model;
 
-use App\DTO\BookCategoryListItem;
+use App\Model\DTO\BookCategoryListItem;
 
 class BookCategoryListResponse
 {

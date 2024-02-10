@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20240210172624 extends AbstractMigration
+final class Version20240210175658 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -27,26 +27,22 @@ final class Version20240210172624 extends AbstractMigration
         $this->addSql('ALTER TABLE book_book_category ADD CONSTRAINT FK_7A5A379440B1D29E FOREIGN KEY (book_category_id) REFERENCES book_category (id) ON DELETE CASCADE NOT DEFERRABLE INITIALLY IMMEDIATE');
         $this->addSql('ALTER TABLE book ADD slug VARCHAR(255) NOT NULL');
         $this->addSql('ALTER TABLE book ADD image VARCHAR(255) NOT NULL');
-        $this->addSql('ALTER TABLE book ADD author TEXT NOT NULL');
-        $this->addSql('ALTER TABLE book ADD date DATE NOT NULL');
-        $this->addSql('ALTER TABLE book ADD meap BOOLEAN NOT NULL');
-        $this->addSql('CREATE UNIQUE INDEX UNIQ_CBE5A331989D9B62 ON book (slug)');
-        $this->addSql('CREATE UNIQUE INDEX UNIQ_CBE5A331C53D045F ON book (image)');
+        $this->addSql('ALTER TABLE book ADD authors TEXT NOT NULL');
+        $this->addSql('ALTER TABLE book ADD publication_date DATE NOT NULL');
+        $this->addSql('ALTER TABLE book ADD meap BOOLEAN DEFAULT \'false\' NOT NULL');
+        $this->addSql('COMMENT ON COLUMN book.authors IS \'(DC2Type:simple_array)\'');
     }
 
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
         $this->addSql('CREATE SCHEMA public');
-        $this->addSql('ALTER TABLE book_book_category DROP CONSTRAINT FK_7A5A379416A2B381');
-        $this->addSql('ALTER TABLE book_book_category DROP CONSTRAINT FK_7A5A379440B1D29E');
         $this->addSql('DROP TABLE book_book_category');
-        $this->addSql('DROP INDEX UNIQ_CBE5A331989D9B62');
-        $this->addSql('DROP INDEX UNIQ_CBE5A331C53D045F');
         $this->addSql('ALTER TABLE book DROP slug');
         $this->addSql('ALTER TABLE book DROP image');
-        $this->addSql('ALTER TABLE book DROP author');
-        $this->addSql('ALTER TABLE book DROP date');
+        $this->addSql('ALTER TABLE book DROP authors');
+        $this->addSql('ALTER TABLE book DROP publication_date');
         $this->addSql('ALTER TABLE book DROP meap');
     }
+
 }

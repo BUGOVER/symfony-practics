@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\Service;
 
-use App\DTO\BookListItem;
 use App\Entity\Book;
 use App\Exception\BookCategoryNotFoundException;
 use App\Model\BookListResponse;
+use App\Model\DTO\BookListItem;
 use App\Repository\BookCategoryRepository;
 use App\Repository\BookRepository;
 

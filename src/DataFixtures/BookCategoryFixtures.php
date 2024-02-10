@@ -10,6 +10,9 @@ use Doctrine\Persistence\ObjectManager;
 
 class BookCategoryFixtures extends Fixture
 {
+    /**
+     * Load data fixtures with the passed EntityManager
+     */
     public function load(ObjectManager $manager): void
     {
         $product = new BookCategory();

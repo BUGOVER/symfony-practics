@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Tests\Service;
 
-use App\DTO\BookCategoryListItem;
 use App\Entity\BookCategory;
 use App\Model\BookCategoryListResponse;
+use App\Model\DTO\BookCategoryListItem;
 use App\Repository\BookCategoryRepository;
 use App\Service\BookCategoryService;
 use Doctrine\Common\Collections\Criteria;

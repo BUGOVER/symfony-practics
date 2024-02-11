@@ -13,6 +13,9 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class BookCategoryController extends AbstractController
 {
+    /**
+     * @param BookCategoryService $bookCategoryService
+     */
     public function __construct(private readonly BookCategoryService $bookCategoryService)
     {
     }

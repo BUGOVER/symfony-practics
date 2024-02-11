@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Service;
 
+use App\Entity\BookCategory;
 use App\Model\BookCategoryListResponse;
 use App\Model\DTO\BookCategoryListItem;
 use App\Repository\BookCategoryRepository;
@@ -24,11 +25,22 @@ class BookCategoryService
     public function getCategories(): BookCategoryListResponse
     {
         $categories = $this->categoryRepository->findBy([], ['title' => Criteria::ASC]);
-        $items = array_map(
-            static fn($item) => new BookCategoryListItem($item->getId(), $item->getTitle(), $item->getSlug()),
-            $categories
-        );
 
-        return new BookCategoryListResponse($items);
+        return new BookCategoryListResponse(array_map(
+            [$this, 'map'],
+            $categories
+        ));
+    }
+
+    /**
+     * @param BookCategory $bookCategory
+     * @return BookCategoryListItem
+     */
+    private function map(BookCategory $bookCategory): BookCategoryListItem
+    {
+        return (new BookCategoryListItem())
+            ->setId($bookCategory->getId())
+            ->setTitle($bookCategory->getTitle())
+            ->setSlug($bookCategory->getSlug());
     }
 }

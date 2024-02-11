@@ -22,7 +22,7 @@ class BookListItem
 
     private bool $meap;
 
-    private Collection $categories;
+    private array $categories;
 
     public function getImage(): string
     {
@@ -68,15 +68,16 @@ class BookListItem
     public function setMeap(bool $meap): static
     {
         $this->meap = $meap;
+
         return $this;
     }
 
-    public function getCategories(): Collection
+    public function getCategories(): array
     {
         return $this->categories;
     }
 
-    public function setCategories(Collection $categories): static
+    public function setCategories(array $categories): static
     {
         $this->categories = $categories;
 

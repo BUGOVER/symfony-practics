@@ -28,8 +28,8 @@ class Book
     #[ORM\Column(type: 'string', length: 255, unique: true)]
     private string $image;
 
-    #[ORM\Column(type: 'simple_array', length: 255)]
-    private string $author;
+    #[ORM\Column(type: 'simple_array', nullable: true)]
+    private ?array $author;
 
     #[ORM\Column(type: 'date')]
     private DateTimeInterface $date;
@@ -37,7 +37,12 @@ class Book
     #[ORM\Column(type: 'boolean')]
     private bool $meap = false;
 
+    /**
+     * @var Collection<BookCategory>
+     */
     #[ORM\ManyToMany(targetEntity: BookCategory::class)]
+    #[ORM\JoinTable(name: 'book_book_category')]
+    #[ORM\JoinColumn(name: 'book_category_id', referencedColumnName: 'id')]
     private Collection $categories;
 
     public function __construct()
@@ -88,12 +93,12 @@ class Book
         return $this;
     }
 
-    public function getAuthor(): string
+    public function getAuthor(): array
     {
         return $this->author;
     }
 
-    public function setAuthor(string $author): static
+    public function setAuthor(?array $author): static
     {
         $this->author = $author;
 

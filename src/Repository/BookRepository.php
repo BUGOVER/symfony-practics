@@ -30,7 +30,7 @@ class BookRepository extends ServiceEntityRepository
      * @param int $categoryId
      * @return Book[]
      */
-    public function findBooksByCategoryid(int $categoryId): array
+    public function findBooksByCategoryId(int $categoryId): array
     {
         return $this
             ->getEntityManager()

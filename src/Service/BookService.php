@@ -37,7 +37,7 @@ class BookService
 
         return new BookListResponse(array_map(
                 [$this, 'map'],
-                $this->bookRepository->findBooksByCategoryid($categoryId))
+                $this->bookRepository->findBooksByCategoryId($categoryId))
         );
     }
 

@@ -33,7 +33,6 @@ class BookController extends AbstractController
         try {
             return $this->json($this->bookService->getBookByCategory($id));
         } catch (Exception $exception) {
-            dd($exception->getMessage());
             throw new HttpException($exception->getCode(), $exception->getMessage());
         }
     }

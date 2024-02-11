@@ -51,7 +51,7 @@ class BookService
             ->setId($book->getId())
             ->setSlug($book->getSlug())
             ->setTitle($book->getTitle())
-            ->setAuthors((array)$book->getAuthor())
+            ->setAuthors((array)$book->getAuthors())
             ->setImage($book->getImage())
             ->setMeap($book->isMeap())
             ->setDate($book->getDate()->getTimestamp());

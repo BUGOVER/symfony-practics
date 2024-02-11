@@ -28,7 +28,7 @@ final class Version20240210175658 extends AbstractMigration
         $this->addSql('ALTER TABLE book ADD slug VARCHAR(255) NOT NULL');
         $this->addSql('ALTER TABLE book ADD image VARCHAR(255) NOT NULL');
         $this->addSql('ALTER TABLE book ADD authors TEXT NOT NULL');
-        $this->addSql('ALTER TABLE book ADD publication_date DATE NOT NULL');
+        $this->addSql('ALTER TABLE book ADD date DATE NOT NULL');
         $this->addSql('ALTER TABLE book ADD meap BOOLEAN DEFAULT \'false\' NOT NULL');
         $this->addSql('COMMENT ON COLUMN book.authors IS \'(DC2Type:simple_array)\'');
     }
@@ -41,7 +41,7 @@ final class Version20240210175658 extends AbstractMigration
         $this->addSql('ALTER TABLE book DROP slug');
         $this->addSql('ALTER TABLE book DROP image');
         $this->addSql('ALTER TABLE book DROP authors');
-        $this->addSql('ALTER TABLE book DROP publication_date');
+        $this->addSql('ALTER TABLE book DROP date');
         $this->addSql('ALTER TABLE book DROP meap');
     }
 

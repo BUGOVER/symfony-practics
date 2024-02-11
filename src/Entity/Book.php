@@ -11,7 +11,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: BookRepository::class)]
-#[ORM\Table(name: 'postgres:book')]
+#[ORM\Table(name: 'book')]
 class Book
 {
     #[ORM\Id]
@@ -25,11 +25,11 @@ class Book
     #[ORM\Column(type: 'string', length: 255, unique: true)]
     private string $slug;
 
-    #[ORM\Column(type: 'string', length: 255, unique: true)]
+    #[ORM\Column(type: 'string', length: 255)]
     private string $image;
 
     #[ORM\Column(type: 'simple_array', nullable: true)]
-    private ?array $author;
+    private ?array $authors;
 
     #[ORM\Column(type: 'date')]
     private DateTimeInterface $date;
@@ -40,7 +40,7 @@ class Book
     /**
      * @var Collection<BookCategory>
      */
-    #[ORM\ManyToMany(targetEntity: BookCategory::class)]
+    #[ORM\ManyToMany(targetEntity: BookCategory::class, mappedBy: 'books')]
     #[ORM\JoinTable(name: 'book_book_category')]
     #[ORM\JoinColumn(name: 'book_category_id', referencedColumnName: 'id')]
     private Collection $categories;
@@ -93,14 +93,14 @@ class Book
         return $this;
     }
 
-    public function getAuthor(): array
+    public function getAuthors(): array
     {
-        return $this->author;
+        return $this->authors;
     }
 
-    public function setAuthor(?array $author): static
+    public function setAuthors(?array $authors): static
     {
-        $this->author = $author;
+        $this->authors = $authors;
 
         return $this;
     }

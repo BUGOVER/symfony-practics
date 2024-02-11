@@ -10,7 +10,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: BookCategoryRepository::class)]
-#[ORM\Table(name: 'postgres:book_category')]
+#[ORM\Table(name: 'book_category')]
 class BookCategory
 {
     #[ORM\Id]
@@ -27,19 +27,19 @@ class BookCategory
     #[ORM\ManyToMany(targetEntity: Book::class, inversedBy: 'categories')]
     #[ORM\JoinTable(name: 'book_book_category')]
     #[ORM\JoinColumn(name: 'book_id', referencedColumnName: 'id')]
-    private Collection|null $books = null;
+    private Collection|null $books;
 
     public function __construct()
     {
         $this->books = new ArrayCollection();
     }
 
-    public function getBooks(): ?string
+    public function getBooks(): Collection
     {
         return $this->books;
     }
 
-    public function setBooks(?string $books): static
+    public function setBooks(Collection $books): static
     {
         $this->books = $books;
 

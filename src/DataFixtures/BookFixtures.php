@@ -25,7 +25,7 @@ class BookFixtures extends Fixture implements DependentFixtureInterface
             ->setSlug('samsung-android-evolution')
             ->setMeap(true)
             ->setImage('')
-            ->setAuthor('Bryan Nantre')
+            ->setAuthors(['Bryan Nantre'])
             ->setCategories(new ArrayCollection([$androidCategory]));
         $manager->persist($book);
         $manager->flush();

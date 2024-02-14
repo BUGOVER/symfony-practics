@@ -9,27 +9,35 @@ use App\Model\BookCategoryListResponse;
 use App\Model\DTO\BookCategoryListItem;
 use App\Repository\BookCategoryRepository;
 use App\Service\BookCategoryService;
-use Doctrine\Common\Collections\Criteria;
+use App\Tests\AbstarctTestCase;
 use PHPUnit\Framework\MockObject\Exception;
-use PHPUnit\Framework\TestCase;
+use ReflectionException;
 
-class BookCategoryServiceTest extends TestCase
+class BookCategoryServiceTest extends AbstarctTestCase
 {
     /**
      * @return void
      * @throws Exception
+     * @throws ReflectionException
      */
     public function testGetCategories(): void
     {
+        $category = (new BookCategory())->setTitle('example')->setSlug('test');
+        $this->setEntityId($category, 15);
+
         $repository = $this->createMock(BookCategoryRepository::class);
         $repository
             ->expects(static::once())
-            ->method('findBy')
-            ->with([], ['title' => Criteria::ASC])
-            ->willReturn((new BookCategory())->setId(7)->setTitle('example')->setSlug('test'));
+            ->method('findAllSortedByTitle')
+            ->willReturn([$category]);
 
         $service = new BookCategoryService($repository);
-        $expected = new BookCategoryListResponse([new BookCategoryListItem(7, 'example', 'test')]);
+        $expected = new BookCategoryListResponse([
+            (new BookCategoryListItem())
+                ->setId(15)
+                ->setTitle('example')
+                ->setSlug('test')
+        ]);
 
         static::assertEquals($expected, $service->getCategories());
     }

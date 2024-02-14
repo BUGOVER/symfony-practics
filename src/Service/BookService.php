@@ -35,9 +35,13 @@ class BookService
             throw new BookCategoryNotFoundException();
         }
 
-        return new BookListResponse(array_map(
+        $books = $this->bookRepository->findBooksByCategoryId($categoryId);
+
+        return new BookListResponse(
+            array_map(
                 [$this, 'map'],
-                $this->bookRepository->findBooksByCategoryId($categoryId))
+                $books
+            )
         );
     }
 

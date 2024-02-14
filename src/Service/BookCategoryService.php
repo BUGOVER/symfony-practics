@@ -8,7 +8,6 @@ use App\Entity\BookCategory;
 use App\Model\BookCategoryListResponse;
 use App\Model\DTO\BookCategoryListItem;
 use App\Repository\BookCategoryRepository;
-use Doctrine\Common\Collections\Criteria;
 
 class BookCategoryService
 {
@@ -24,7 +23,7 @@ class BookCategoryService
      */
     public function getCategories(): BookCategoryListResponse
     {
-        $categories = $this->categoryRepository->findBy([], ['title' => Criteria::ASC]);
+        $categories = $this->categoryRepository->findAllSortedByTitle();
 
         return new BookCategoryListResponse(array_map(
             [$this, 'map'],

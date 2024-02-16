@@ -5,20 +5,19 @@ declare(strict_types=1);
 namespace App\Tests\Service;
 
 use App\Entity\Book;
-use App\Entity\BookCategory;
 use App\Exception\BookCategoryNotFoundException;
 use App\Model\BookListResponse;
 use App\Model\DTO\BookListItem;
 use App\Repository\BookCategoryRepository;
 use App\Repository\BookRepository;
 use App\Service\BookService;
-use App\Tests\AbstarctTestCase;
+use App\Tests\AbstractCaseTest;
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use PHPUnit\Framework\MockObject\Exception;
 use ReflectionException;
 
-class BookServiceTest extends AbstarctTestCase
+class BookServiceTest extends AbstractCaseTest
 {
     /**
      * @throws Exception
@@ -29,9 +28,9 @@ class BookServiceTest extends AbstarctTestCase
         $bookCategoryRepository = $this->createMock(BookCategoryRepository::class);
         $bookCategoryRepository
             ->expects(self::once())
-            ->method('find')
+            ->method('existsById')
             ->with(140)
-            ->willThrowException(new BookCategoryNotFoundException());
+            ->willReturn(false);
 
         $this->expectException(BookCategoryNotFoundException::class);
 
@@ -54,9 +53,9 @@ class BookServiceTest extends AbstarctTestCase
         $bookCategoryRepository = $this->createMock(BookCategoryRepository::class);
         $bookCategoryRepository
             ->expects(self::once())
-            ->method('find')
+            ->method('existsById')
             ->with(7)
-            ->willReturn(new BookCategory());
+            ->willReturn(true);
 
         $service = (new BookService($bookRepository, $bookCategoryRepository));
         $expected = new BookListResponse([$this->createBookitemList()]);

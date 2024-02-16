@@ -30,7 +30,7 @@ class BookRepository extends ServiceEntityRepository
      * @param int $categoryId
      * @return Book[]
      */
-    public function findBooksByCategoryId(int $categoryId): array
+    public function findBooksByCategoryId(int $categoryId): mixed
     {
         $dql = 'SELECT b FROM App\Entity\Book b WHERE :categoryId MEMBER OF b.categories AND b.date IS NOT NULL';
 

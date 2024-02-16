@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\DataFixtures;
 
 use App\Entity\Book;
@@ -21,12 +23,12 @@ class BookFixtures extends Fixture implements DependentFixtureInterface
 
         $book
             ->setTitle('Samsung')
-            ->setDate(new DateTime('2000-04-01'))
+            ->setDate(new DateTime('2024-04-01'))
             ->setSlug('samsung-android-evolution')
             ->setMeap(true)
             ->setImage('')
             ->setAuthors(['Bryan Nantre'])
-            ->setCategories(new ArrayCollection([$androidCategory]));
+            ->setCategories(new ArrayCollection([$androidCategory, $iphoneCategory, $windowsCategory]));
         $manager->persist($book);
         $manager->flush();
     }

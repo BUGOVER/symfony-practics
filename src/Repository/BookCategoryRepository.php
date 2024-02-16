@@ -34,4 +34,13 @@ class BookCategoryRepository extends ServiceEntityRepository
     {
         return $this->findBy([], ['title' => Criteria::ASC]);
     }
+
+    /**
+     * @param int $id
+     * @return bool
+     */
+    public function existsById(int $id): bool
+    {
+        return null !== $this->find($id);
+    }
 }

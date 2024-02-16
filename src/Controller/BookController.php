@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Exception\BookCategoryNotFoundException;
 use App\Model\BookListResponse;
 use App\Service\BookService;
 use Exception;
@@ -30,10 +31,6 @@ class BookController extends AbstractController
     #[Route(path: '/api/v1/category/{id}/books', methods: ['GET'], requirements: ['id' => '\d+'])]
     public function bookByCategory(int $id): Response
     {
-        try {
-            return $this->json($this->bookService->getBookByCategory($id));
-        } catch (Exception $exception) {
-            throw new HttpException($exception->getCode(), $exception->getMessage());
-        }
+        return $this->json($this->bookService->getBookByCategory($id));
     }
 }

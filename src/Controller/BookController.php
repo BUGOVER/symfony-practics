@@ -4,14 +4,12 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Exception\BookCategoryNotFoundException;
 use App\Model\BookListResponse;
+use App\Model\ErrorResponse;
 use App\Service\BookService;
-use Exception;
 use Nelmio\ApiDocBundle\Annotation\Model;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\Routing\Attribute\Route;
 
 class BookController extends AbstractController
@@ -23,12 +21,22 @@ class BookController extends AbstractController
     {
     }
 
-    #[\OpenApi\Attributes\Response(
-        response: 200,
-        description: 'Get books by category ID',
-        content: new Model(type: BookListResponse::class)
+    #[
+        \OpenApi\Attributes\Response(
+            response: 200,
+            description: 'Get books by category ID',
+            content: new Model(type: BookListResponse::class)
+        ),
+        \OpenApi\Attributes\Response(
+            response: 404,
+            description: "book category didn't find",
+            content: new Model(type: ErrorResponse::class)
+        )]
+    #[Route(
+        path: '/api/v1/category/{id}/books',
+        requirements: ['id' => '\d+'],
+        methods: ['GET']
     )]
-    #[Route(path: '/api/v1/category/{id}/books', methods: ['GET'], requirements: ['id' => '\d+'])]
     public function bookByCategory(int $id): Response
     {
         return $this->json($this->bookService->getBookByCategory($id));

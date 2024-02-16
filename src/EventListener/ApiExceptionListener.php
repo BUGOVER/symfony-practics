@@ -52,7 +52,7 @@ class ApiExceptionListener
 
         $message = $mapping->isHidden() ? Response::$statusTexts[$mapping->getCode()] : $throwable->getMessage();
         $data = $this->serializer->serialize(new ErrorResponse($message), JsonEncoder::FORMAT);
-        $response = new JsonResponse($data, $throwable->getCode(), [], true);
+        $response = new JsonResponse($data, $mapping->getCode(), [], true);
 
         $event->setResponse($response);
     }

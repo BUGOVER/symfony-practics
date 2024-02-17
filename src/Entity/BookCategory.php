@@ -7,6 +7,7 @@ namespace App\Entity;
 use App\Repository\BookCategoryRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: BookCategoryRepository::class)]
@@ -15,13 +16,13 @@ class BookCategory
 {
     #[ORM\Id]
     #[ORM\GeneratedValue(strategy: 'SEQUENCE')]
-    #[ORM\Column(type: 'integer', nullable: false)]
+    #[ORM\Column(type: Types::INTEGER, nullable: false)]
     private ?int $id = null;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column(type: Types::STRING, length: 255)]
     private ?string $title = null;
 
-    #[ORM\Column(type: 'string', length: 255, unique: true)]
+    #[ORM\Column(type: Types::STRING, length: 255, unique: true)]
     private ?string $slug = null;
 
     #[ORM\ManyToMany(targetEntity: Book::class, inversedBy: 'categories')]

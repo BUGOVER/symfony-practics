@@ -8,6 +8,7 @@ use App\Repository\BookRepository;
 use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: BookRepository::class)]
@@ -16,25 +17,25 @@ class Book
 {
     #[ORM\Id]
     #[ORM\GeneratedValue(strategy: 'SEQUENCE')]
-    #[ORM\Column(type: 'integer', nullable: false)]
+    #[ORM\Column(type: Types::INTEGER, nullable: false)]
     private ?int $id = null;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column(type: Types::STRING, length: 255)]
     private string $title;
 
-    #[ORM\Column(type: 'string', length: 255, unique: true)]
+    #[ORM\Column(type: Types::STRING, length: 255, unique: true)]
     private string $slug;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column(type: Types::STRING, length: 255)]
     private string $image;
 
-    #[ORM\Column(type: 'simple_array', nullable: true)]
+    #[ORM\Column(type: Types::SIMPLE_ARRAY, nullable: true)]
     private ?array $authors;
 
-    #[ORM\Column(type: 'date')]
+    #[ORM\Column(type: Types::DATE_MUTABLE)]
     private DateTimeInterface $date;
 
-    #[ORM\Column(type: 'boolean')]
+    #[ORM\Column(type: Types::BOOLEAN)]
     private bool $meap = false;
 
     /**

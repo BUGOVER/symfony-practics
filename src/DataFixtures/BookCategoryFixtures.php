@@ -21,11 +21,11 @@ class BookCategoryFixtures extends Fixture
      */
     public function load(ObjectManager $manager): void
     {
-        $product = new BookCategory();
+        $book_category = new BookCategory();
         $categories = [
-            self::ANDROID => $product->setTitle('Android')->setSlug('android'),
-            self::IPHONE => $product->setTitle('Iphone')->setSlug('ios'),
-            self::WINDOWS_PHONE => $product->setTitle('Windows')->setSlug('windows_mobile'),
+            self::ANDROID => $book_category->setTitle('Android')->setSlug(self::ANDROID),
+            self::IPHONE => $book_category->setTitle('Iphone')->setSlug(self::IPHONE),
+            self::WINDOWS_PHONE => $book_category->setTitle('Windows')->setSlug(self::WINDOWS_PHONE),
         ];
 
         foreach ($categories as $category) {
@@ -36,6 +36,5 @@ class BookCategoryFixtures extends Fixture
         foreach ($categories as $key => $category) {
             $this->addReference($key, $category);
         }
-        $manager->flush();
     }
 }

@@ -15,8 +15,8 @@ use Doctrine\ORM\Mapping as ORM;
 class Book
 {
     #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column(type: 'integer')]
+    #[ORM\GeneratedValue(strategy: 'SEQUENCE')]
+    #[ORM\Column(type: 'integer', nullable: false)]
     private ?int $id = null;
 
     #[ORM\Column(type: 'string', length: 255)]

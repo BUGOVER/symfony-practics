@@ -17,9 +17,9 @@ class BookFixtures extends Fixture implements DependentFixtureInterface
     {
         $book = new Book();
 
-        $androidCategory = $this->getReference(BookCategoryFixtures::ANDROID);
-        $iphoneCategory = $this->getReference(BookCategoryFixtures::IPHONE);
-        $windowsCategory = $this->getReference(BookCategoryFixtures::WINDOWS_PHONE);
+        $android_category = $this->getReference(BookCategoryFixtures::ANDROID);
+        $iphone_category = $this->getReference(BookCategoryFixtures::IPHONE);
+        $windows_category = $this->getReference(BookCategoryFixtures::WINDOWS_PHONE);
 
         $book
             ->setTitle('Samsung')
@@ -28,7 +28,8 @@ class BookFixtures extends Fixture implements DependentFixtureInterface
             ->setMeap(true)
             ->setImage('')
             ->setAuthors(['Bryan Nantre'])
-            ->setCategories(new ArrayCollection([$androidCategory, $iphoneCategory, $windowsCategory]));
+            ->setCategories(new ArrayCollection([$android_category, $iphone_category, $windows_category]));
+
         $manager->persist($book);
         $manager->flush();
     }

@@ -4,20 +4,26 @@ declare(strict_types=1);
 
 namespace App\Model;
 
+use Nelmio\ApiDocBundle\Annotation\Model;
+use OpenApi\Attributes\Property;
+
 class ErrorResponse
 {
     /**
      * @param string $message
-     * @param array $details
+     * @param ErrorDebugDetails $details
      */
-    public function __construct(private readonly string $message, private readonly array $details = [])
+    public function __construct(private readonly string $message, private readonly ErrorDebugDetails $details)
     {
     }
 
-    /**
-     * @return array
-     */
-    public function getDetails(): array
+    #[
+        Property(type: 'object', oneOf: [
+            new Model(type: ErrorDebugDetails::class),
+            new Model(type: ErrorValidationDetails::class),
+        ])
+    ]
+    public function getDetails(): ErrorDebugDetails
     {
         return $this->details;
     }

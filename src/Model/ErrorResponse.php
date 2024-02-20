@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Model;
 
+use App\Exception\Details\ErrorDebugDetails;
+use App\Exception\Details\ErrorValidationDetails;
 use Nelmio\ApiDocBundle\Annotation\Model;
 use OpenApi\Attributes\Property;
 

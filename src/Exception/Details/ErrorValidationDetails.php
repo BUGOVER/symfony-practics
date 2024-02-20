@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Model;
+namespace App\Exception\Details;
 
 use App\Model\DTO\ErrorValidationDetailsItem;
 

@@ -30,10 +30,12 @@ class SubscribeController extends AbstractController
             content: new Model(type: SubscriberRequest::class)
         ),
         OA\Attributes\Response(
-            response: 409,
+            response: 403,
             description: 'already subscribe to this email',
             content: new Model(type: ErrorResponse::class)
-        )]
+        ),
+        OA\Attributes\RequestBody(content: new Model(type: SubscriberRequest::class))
+    ]
     #[Route(
         path: '/api/v1/subscribe',
         methods: ['POST']

@@ -8,15 +8,16 @@ class ErrorResponse
 {
     /**
      * @param string $message
+     * @param array $details
      */
-    public function __construct(private readonly string $message, private readonly mixed $details = null)
+    public function __construct(private readonly string $message, private readonly array $details = [])
     {
     }
 
     /**
-     * @return mixed
+     * @return array
      */
-    public function getDetails(): mixed
+    public function getDetails(): array
     {
         return $this->details;
     }

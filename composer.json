@@ -25,6 +25,7 @@
     "symfony/runtime": "^6.4.0",
     "symfony/serializer": "^6.4.0",
     "symfony/twig-bundle": "^6.4.0",
+    "symfony/validator": "^6.4.0",
     "symfony/yaml": "^6.4.0",
     "twig/extra-bundle": "^3.0.0",
     "twig/twig": "^3.0.0"

@@ -27,7 +27,7 @@ class BookCategory
 
     #[ORM\ManyToMany(targetEntity: Book::class, inversedBy: 'categories')]
     #[ORM\JoinTable(name: 'book_book_category')]
-    #[ORM\JoinColumn(name: 'book_id', referencedColumnName: 'id')]
+    #[ORM\JoinColumn(name: 'book_category_id', referencedColumnName: 'id')]
     private Collection|null $books;
 
     public function __construct()

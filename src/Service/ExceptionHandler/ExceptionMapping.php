@@ -11,8 +11,11 @@ class ExceptionMapping
      * @param bool $hidden
      * @param bool $loggable
      */
-    public function __construct(private int $code, private bool $hidden = true, private bool $loggable = false)
-    {
+    public function __construct(
+        private readonly int $code,
+        private readonly bool $hidden = true,
+        private readonly bool $loggable = false
+    ) {
     }
 
     /**

@@ -8,21 +8,21 @@ use PHPUnit\Framework\TestCase;
 use ReflectionClass;
 use ReflectionException;
 
-class AbstractCaseTest extends TestCase
+abstract class AbstractCaseTest extends TestCase
 {
     /**
      * Set entity id in entities for mock entity data
      *
      * @param object $entity
      * @param int $value
-     * @param $idField
+     * @param string $id_field
      * @return void
      * @throws ReflectionException
      */
-    protected function setEntityId(object $entity, int $value, string $idField = 'id'): void
+    protected function setEntityId(object $entity, int $value, string $id_field = 'id'): void
     {
         $reflection = new ReflectionClass($entity);
-        $property = $reflection->getProperty($idField);
+        $property = $reflection->getProperty($id_field);
         $property->setAccessible(true);
         $property->setValue($entity, $value);
         $property->setAccessible(false);

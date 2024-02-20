@@ -43,7 +43,7 @@ class Book
      */
     #[ORM\ManyToMany(targetEntity: BookCategory::class, mappedBy: 'books')]
     #[ORM\JoinTable(name: 'book_book_category')]
-    #[ORM\JoinColumn(name: 'book_category_id', referencedColumnName: 'id')]
+    #[ORM\JoinColumn(name: 'book_id', referencedColumnName: 'id')]
     private Collection $categories;
 
     public function __construct()

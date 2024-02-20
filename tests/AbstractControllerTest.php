@@ -8,7 +8,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class AbstractControllerTest extends WebTestCase
+abstract class AbstractControllerTest extends WebTestCase
 {
     protected KernelBrowser $client;
 

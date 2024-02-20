@@ -9,16 +9,10 @@ use App\Model\DTO\BookListItem;
 class BookListResponse
 {
     /**
-     * @var BookListItem[]
-     */
-    private array $items;
-
-    /**
      * @param BookListItem[] $items
      */
-    public function __construct(array $items)
+    public function __construct(private readonly array $items)
     {
-        $this->items = $items;
     }
 
     /**

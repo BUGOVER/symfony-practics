@@ -6,9 +6,12 @@ namespace App\Service\ExceptionHandler;
 
 use InvalidArgumentException;
 
+/**
+ * @link \App\Tests\Service\ExceptionHandler\ExceptionMappingResolverTest
+ */
 class ExceptionMappingResolver
 {
-    private array $mappings;
+    private array $mappings = [];
 
     /**
      * @param array $mappings

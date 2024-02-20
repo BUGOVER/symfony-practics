@@ -27,17 +27,17 @@ class BookRepository extends ServiceEntityRepository
     }
 
     /**
-     * @param int $categoryId
+     * @param int $category_id
      * @return Book[]
      */
-    public function findBooksByCategoryId(int $categoryId): mixed
+    public function findBooksByCategoryId(int $category_id): mixed
     {
-        $dql = 'SELECT b FROM App\Entity\Book b WHERE :categoryId MEMBER OF b.categories AND b.date IS NOT NULL';
+        $dql = 'SELECT b FROM App\Entity\Book b WHERE :category_id MEMBER OF b.categories AND b.date IS NOT NULL';
 
         return $this
             ->getEntityManager()
             ->createQuery($dql)
-            ->setParameter('categoryId', $categoryId)
+            ->setParameter('category_id', $category_id)
             ->getResult();
     }
 }

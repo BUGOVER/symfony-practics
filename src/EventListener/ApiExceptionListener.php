@@ -16,6 +16,9 @@ use Symfony\Component\Serializer\SerializerInterface;
 
 use function get_class;
 
+/**
+ * @link \App\Tests\EventListener\ApiExceptionListenerTest
+ */
 class ApiExceptionListener
 {
     /**
@@ -53,7 +56,7 @@ class ApiExceptionListener
         }
 
         $message = $mapping->isHidden() ? Response::$statusTexts[$mapping->getCode()] : $throwable->getMessage();
-        $details = $this->isDebug ? ['trace' => $throwable->getTraceAsString()] : null;
+        $details = $this->isDebug ? ['trace' => $throwable->getTraceAsString()] : [];
         $data = $this->serializer->serialize(new ErrorResponse($message, $details), JsonEncoder::FORMAT);
         $response = new JsonResponse($data, $mapping->getCode(), [], true);
 

@@ -15,6 +15,7 @@ class ErrorValidationDetails
 
     public function __construct()
     {
+        // @TODO
     }
 
     public function addViolation(string $field, string $message)

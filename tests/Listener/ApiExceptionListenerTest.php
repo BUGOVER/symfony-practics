@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Tests\Listener;
 
-use App\Exception\Details\ErrorDebugDetails;
 use App\Listener\ApiExceptionListener;
+use App\Model\Details\ErrorDebugDetails;
 use App\Model\ErrorResponse;
-use App\Model\ExceptionMapping;
 use App\Resolver\ExceptionMappingResolver;
+use App\Service\ExceptionMapping;
 use App\Tests\AbstractCaseTest;
 use InvalidArgumentException;
 use JsonException;

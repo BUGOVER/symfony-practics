@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Exception\Details;
+namespace App\Model\Details;
 
 class ErrorDebugDetails
 {

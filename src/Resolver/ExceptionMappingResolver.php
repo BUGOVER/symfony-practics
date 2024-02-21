@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Resolver;
 
-use App\Model\ExceptionMapping;
+use App\Service\ExceptionMapping;
 use InvalidArgumentException;
 
 /**

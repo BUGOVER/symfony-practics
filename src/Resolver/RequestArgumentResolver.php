@@ -30,7 +30,9 @@ class RequestArgumentResolver implements ValueResolverInterface
     }
 
     /**
-     * Returns the possible value(s).
+     * @param Request $request
+     * @param ArgumentMetadata $argument
+     * @return iterable
      */
     public function resolve(Request $request, ArgumentMetadata $argument): iterable
     {
@@ -54,6 +56,6 @@ class RequestArgumentResolver implements ValueResolverInterface
             throw new ValidationException($errors);
         }
 
-        yield $model;
+        return [$model];
     }
 }

@@ -10,7 +10,7 @@ class ErrorValidationDetailsItem
      * @param string $field
      * @param string $message
      */
-    public function __construct(private string $field, private string $message)
+    public function __construct(private readonly string $field, private readonly string $message)
     {
     }
 

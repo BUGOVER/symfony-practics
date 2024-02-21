@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\Listener;
 
-use App\Exception\Details\ErrorDebugDetails;
+use App\Model\Details\ErrorDebugDetails;
 use App\Model\ErrorResponse;
-use App\Model\ExceptionMapping;
 use App\Resolver\ExceptionMappingResolver;
+use App\Service\ExceptionMapping;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;

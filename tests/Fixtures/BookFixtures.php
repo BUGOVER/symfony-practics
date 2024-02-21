@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\DataFixtures;
+namespace App\Tests\Fixtures;
 
 use App\Entity\Book;
 use DateTime;

@@ -33,8 +33,8 @@ class BookCategoryFixtures extends Fixture
         }
         $manager->flush();
 
-        foreach ($categories as $key => $category) {
-            $this->addReference($key, $category);
+        foreach ($categories as $name => $category) {
+            $this->addReference($name, $category);
         }
     }
 }

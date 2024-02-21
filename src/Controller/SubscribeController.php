@@ -31,10 +31,10 @@ class SubscribeController extends AbstractController
         ),
         OA\Attributes\Response(
             response: 403,
-            description: 'already subscribe to this email',
-            content: new Model(type: ErrorResponse::class)
+            description: 'validation failed',
+            attachables: [new Model(type: ErrorResponse::class)]
         ),
-        OA\Attributes\RequestBody(content: new Model(type: SubscriberRequest::class))
+        OA\Attributes\RequestBody(attachables: [new Model(type: SubscriberRequest::class)])
     ]
     #[Route(
         path: '/api/v1/subscribe',

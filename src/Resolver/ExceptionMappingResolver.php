@@ -8,7 +8,7 @@ use App\Model\ExceptionMapping;
 use InvalidArgumentException;
 
 /**
- * @link \App\Tests\Service\ExceptionHandler\ExceptionMappingResolverTest
+ * @link \App\Tests\Resolver\ExceptionMappingResolverTest
  */
 class ExceptionMappingResolver
 {

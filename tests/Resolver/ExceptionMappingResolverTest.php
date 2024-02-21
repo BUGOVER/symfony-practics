@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Service\ExceptionHandler;
+namespace App\Tests\Resolver;
 
 use App\Resolver\ExceptionMappingResolver;
 use App\Tests\AbstractCaseTest;

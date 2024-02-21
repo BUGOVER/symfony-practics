@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\EventListener;
 
+use App\Exception\Details\ErrorDebugDetails;
 use App\Listener\ApiExceptionListener;
 use App\Model\ErrorResponse;
 use App\Model\ExceptionMapping;
@@ -50,7 +51,11 @@ class ApiExceptionListenerTest extends AbstractCaseTest
 
         $this->serializer
             ->method('serialize')
-            ->with(new ErrorResponse($response_message), JsonEncoder::FORMAT)
+            ->with($this->callback(function (ErrorResponse $response) use ($response_message) {
+                return $response->getMessage() == $response_message
+                    && $response->getDetails() instanceof ErrorDebugDetails
+                    && !empty($response->getDetails()->getTrace());
+            }), JsonEncoder::FORMAT)
             ->willReturn($response_body);
 
         $response = $this->sendEvent();
@@ -66,7 +71,7 @@ class ApiExceptionListenerTest extends AbstractCaseTest
     private function sendEvent(): ?Response
     {
         $event = $this->createEvent(new InvalidArgumentException('test'));
-        $listener = new ApiExceptionListener($this->resolver, $this->logger, $this->serializer, false);
+        $listener = new ApiExceptionListener($this->resolver, $this->logger, $this->serializer, true);
         $listener($event);
 
         return $event->getResponse();
@@ -122,7 +127,11 @@ class ApiExceptionListenerTest extends AbstractCaseTest
 
         $this->serializer
             ->method('serialize')
-            ->with(new ErrorResponse($response_message), JsonEncoder::FORMAT)
+            ->with($this->callback(function (ErrorResponse $response) use ($response_message) {
+                return $response->getMessage() == $response_message
+                    && $response->getDetails() instanceof ErrorDebugDetails
+                    && !empty($response->getDetails()->getTrace());
+            }), JsonEncoder::FORMAT)
             ->willReturn($response_body);
 
         $response = $this->sendEvent();

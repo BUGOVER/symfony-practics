@@ -8,6 +8,7 @@ use App\Exception\Details\ErrorDebugDetails;
 use App\Exception\Details\ErrorValidationDetails;
 use Nelmio\ApiDocBundle\Annotation\Model;
 use OpenApi\Attributes\Property;
+use OpenApi\Attributes\Schema;
 
 class ErrorResponse
 {
@@ -20,9 +21,9 @@ class ErrorResponse
     }
 
     #[
-        Property(type: 'object', oneOf: [
-            new Model(type: ErrorDebugDetails::class),
-            new Model(type: ErrorValidationDetails::class),
+        Property(type: 'object', nullable: true, oneOf: [
+            new Schema(ref: new Model(type: ErrorDebugDetails::class)),
+            new Schema(ref: new Model(type: ErrorValidationDetails::class)),
         ])
     ]
     public function getDetails(): ErrorDebugDetails

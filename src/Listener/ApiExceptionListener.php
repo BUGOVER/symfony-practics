@@ -6,8 +6,8 @@ namespace App\Listener;
 
 use App\Exception\Details\ErrorDebugDetails;
 use App\Model\ErrorResponse;
-use App\Service\ExceptionHandler\ExceptionMapping;
-use App\Service\ExceptionHandler\ExceptionMappingResolver;
+use App\Model\ExceptionMapping;
+use App\Resolver\ExceptionMappingResolver;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;

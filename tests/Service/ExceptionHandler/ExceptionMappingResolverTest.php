@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Service\ExceptionHandler;
 
-use App\Service\ExceptionHandler\ExceptionMappingResolver;
+use App\Resolver\ExceptionMappingResolver;
 use App\Tests\AbstractCaseTest;
 use InvalidArgumentException;
 

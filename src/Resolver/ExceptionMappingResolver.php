@@ -2,8 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Service\ExceptionHandler;
+namespace App\Resolver;
 
+use App\Model\ExceptionMapping;
 use InvalidArgumentException;
 
 /**

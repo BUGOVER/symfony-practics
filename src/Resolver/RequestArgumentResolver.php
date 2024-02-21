@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\ArgumentResolver;
+namespace App\Resolver;
 
 use App\Attributes\RequestBody;
 use App\Exception\RequestBodyConvertException;

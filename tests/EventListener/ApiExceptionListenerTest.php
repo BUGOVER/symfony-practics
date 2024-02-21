@@ -6,8 +6,8 @@ namespace App\Tests\EventListener;
 
 use App\Listener\ApiExceptionListener;
 use App\Model\ErrorResponse;
-use App\Service\ExceptionHandler\ExceptionMapping;
-use App\Service\ExceptionHandler\ExceptionMappingResolver;
+use App\Model\ExceptionMapping;
+use App\Resolver\ExceptionMappingResolver;
 use App\Tests\AbstractCaseTest;
 use InvalidArgumentException;
 use JsonException;

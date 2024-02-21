@@ -6,8 +6,8 @@ namespace App\Service;
 
 use App\Entity\Subscriber;
 use App\Exception\SubscriberAlreadyExistsException;
-use App\Model\SubscriberRequest;
 use App\Repository\SubscriberRepository;
+use App\Request\SubscriberRequest;
 use Doctrine\ORM\EntityManagerInterface;
 
 class SubscriberService

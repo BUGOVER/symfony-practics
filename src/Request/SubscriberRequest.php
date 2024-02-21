@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Model;
+namespace App\Request;
 
 use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Validator\Constraints\IsTrue;

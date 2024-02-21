@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\EventListener;
+namespace App\Tests\Listener;
 
 use App\Exception\Details\ErrorDebugDetails;
 use App\Listener\ApiExceptionListener;

@@ -6,7 +6,7 @@ namespace App\Controller;
 
 use App\Attributes\RequestBody;
 use App\Model\ErrorResponse;
-use App\Model\SubscriberRequest;
+use App\Request\SubscriberRequest;
 use App\Service\SubscriberService;
 use Nelmio\ApiDocBundle\Annotation\Model;
 use OpenApi as OA;

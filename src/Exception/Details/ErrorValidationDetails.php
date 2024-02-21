@@ -18,7 +18,12 @@ class ErrorValidationDetails
         // @TODO
     }
 
-    public function addViolation(string $field, string $message)
+    /**
+     * @param string $field
+     * @param string $message
+     * @return void
+     */
+    public function addViolation(string $field, string $message): void
     {
         $this->violations[] = new ErrorValidationDetailsItem($field, $message);
     }

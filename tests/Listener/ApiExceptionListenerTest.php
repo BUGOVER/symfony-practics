@@ -128,7 +128,7 @@ class ApiExceptionListenerTest extends AbstractCaseTest
         $this->serializer
             ->method('serialize')
             ->with($this->callback(function (ErrorResponse $response) use ($response_message) {
-                return $response->getMessage() == $response_message
+                return $response->getMessage() === $response_message
                     && $response->getDetails() instanceof ErrorDebugDetails
                     && !empty($response->getDetails()->getTrace());
             }), JsonEncoder::FORMAT)

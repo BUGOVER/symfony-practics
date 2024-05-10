@@ -38,7 +38,8 @@ class SubscribeController extends AbstractController
     ]
     #[Route(
         path: '/api/v1/subscribe',
-        methods: ['POST']
+        name: 'subscribe',
+        methods: ['POST'],
     )]
     public function subscribe(#[RequestBody] SubscriberRequest $request): JsonResponse
     {

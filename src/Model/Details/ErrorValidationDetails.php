@@ -6,7 +6,7 @@ namespace App\Model\Details;
 
 use App\Model\DTO\ErrorValidationDetailsItem;
 
-class ErrorValidationDetails
+class ErrorValidationDetails extends \App\Model\Details\ErrorDebugDetails
 {
     /**
      * @var ErrorValidationDetailsItem[]
